@@ -1,2 +1,2 @@
 #!/bin/bash
-cp -~ *.hmtl ../
+cp -un *.hmtl ../
