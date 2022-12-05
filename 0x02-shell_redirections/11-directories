@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -al|wc-l 
+find . -type d! -path | wc -l 
