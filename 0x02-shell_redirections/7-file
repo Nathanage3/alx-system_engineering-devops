@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -c 8-18 best_school.txt
+cut -c 8-18 \*\\'"Best School"\'\\*$\?\*\*\*\*\*:)
