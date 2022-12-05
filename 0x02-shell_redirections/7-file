@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -c 8-18 \*\\'"Best School"\'\\*$\?\*\*\*\*\*:)
+echo "Best School" > "\*\\'"Best School"\'\\*$\?\*\*\*\*\*:)"
