@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -c 7-17 bebest
+cut -c 7-17 best_school.txt
