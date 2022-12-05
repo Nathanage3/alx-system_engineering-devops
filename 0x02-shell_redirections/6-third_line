@@ -1,2 +1,2 @@
 #!/bin/bash
-head -3 iacta
+cut -d"\r" -f3 iacta 
