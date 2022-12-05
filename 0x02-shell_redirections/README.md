@@ -1,1 +1,1 @@
-Display the content of the file
+Shell navigation 0x02
