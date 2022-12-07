@@ -1,0 +1,2 @@
+#!/bin/bash
+echo {a..o}{a..o} | tr '' '\n' | egrep -v oo
