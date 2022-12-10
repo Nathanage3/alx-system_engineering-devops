@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -al . .. | grep "." | wc -l 
+ls -alR .  ..|grep "."":"|wc -l
