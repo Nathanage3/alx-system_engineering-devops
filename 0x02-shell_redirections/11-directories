@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -alR .  ..|grep "."":"|wc -l
+find . -type d ! -path . |wc -l
