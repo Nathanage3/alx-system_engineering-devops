@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -l | tail -n 10 
+find . -maxdepth 1 -type f -printf "%T+\t%p\n" | sort -r | head -n 10
