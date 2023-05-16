@@ -1,2 +1,2 @@
 #!/bin/bash
-printenv | cut -d '=' -f l
+printenv 
