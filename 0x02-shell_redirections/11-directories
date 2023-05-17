@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -laR | wc -l
+find . -type d -not -path '*/\.*' -not -path '.' -not -path '..'
