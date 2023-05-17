@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lt | head -n 11 | tail -n +2
+ls -lt | find . -type f | head
