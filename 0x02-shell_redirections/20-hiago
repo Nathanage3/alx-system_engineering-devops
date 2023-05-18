@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -v "cC"
+tr "cC" "\0"
