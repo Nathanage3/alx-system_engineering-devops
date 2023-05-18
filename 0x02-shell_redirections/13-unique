@@ -1,2 +1,2 @@
 #!/bin/bash
-sort -u list | uniq > output
+cat list | tr ' ' '\n' | sort | uniq -u
