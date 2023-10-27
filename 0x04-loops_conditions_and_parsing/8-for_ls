@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Where only the part of the name after the first dash is displayed
+
+for file in *; do
+	if [ -f "$file" ]; then
+		after_dash=${file#*-}
+		echo "$after_dash"
+	fi
+done
