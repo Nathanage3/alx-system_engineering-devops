@@ -1,28 +1,23 @@
 #!/usr/bin/env bash
-# This script displays numbers from 1 to 20 with specific messages for the 4th, 9th, and 17th iterations
-
-counter=1
-
-while [ $counter -le 20 ]; do
-  echo -n "$counter "
-
-  case $counter in
-    4)
-      echo ""
-      echo "and then bad luck from China"
-      ;;
-    9)
-      echo ""
-      echo "and then bad luck from Japan"
-      ;;
-    17)
-      echo ""
-      echo "and then bad luck from Italy"
-      ;;
+# Bash script that displays numbers from 1 to 20 and:
+# displays 4 and then bad luck from China for the 4th loop iteration
+# displays 9 and then bad luck from Japan for the 9th loop iteration
+# displays 17 and then bad luck from Italy for the 17th loop iteration
+i="1"
+while [ $i -le 20 ]
+do
+case $i in
+    4) echo $i
+       echo "bad luck from China"
+    ;;
+    9) echo $i
+       echo "bad luck from Japan"
+    ;;
+    17)echo $i 
+       echo "bad luck from Italy"
+    ;;
     *)
-      echo "" # Just a new line for other numbers
-      ;;
-  esac
-
-  ((counter++))
+	    echo $i
+esac
+i=$((i+1))
 done
