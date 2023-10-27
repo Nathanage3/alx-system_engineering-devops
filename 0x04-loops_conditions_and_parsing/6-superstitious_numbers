@@ -4,16 +4,19 @@
 counter=1
 
 while [ $counter -le 20 ]; do
-  echo -n "$counter " # Print the number and a space, without a newline
+  echo -n "$counter "
 
   case $counter in
     4)
+      echo ""
       echo "and then bad luck from China"
       ;;
     9)
+      echo ""
       echo "and then bad luck from Japan"
       ;;
     17)
+      echo ""
       echo "and then bad luck from Italy"
       ;;
     *)
