@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# Write a Bash script that displays its own PID.
+# Displays its own process ID.
 
 echo $$
