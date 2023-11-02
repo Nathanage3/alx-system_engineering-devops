@@ -1,6 +1,5 @@
 Networking Basics
-1. Definition:
-
+1. Definition of networking:
 Networking in the context of computers refers to the practice of connecting computers, servers, mainframes, network devices, peripherals, or other devices to share data and resources.
 2. Key Components:
 
