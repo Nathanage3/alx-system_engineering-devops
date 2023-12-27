@@ -1,8 +1,4 @@
-class killmenow {
-  exec { 'kill_process':
-    command => 'pkill -f killmenow',
-    onlyif  => 'pgrep -f killmenow', # Only run if the process is currently running
-  }
+#Kills a process named killmenow
+exec{'pkill -f killmenow':
+path  => '/usr/bin/:/usr/local/bin/:/bin/'
 }
-
-include killmenow
