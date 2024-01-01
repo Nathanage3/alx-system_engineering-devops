@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-PRIVATE_KEY="~/.ssh/school"
+PRIVATE_KEY="~/.ssh/id_rsa"
 
 ssh -i $PRIVATE_KEY ubuntu@52.204.95.133
