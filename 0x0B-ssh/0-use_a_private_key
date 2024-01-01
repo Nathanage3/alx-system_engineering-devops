@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-PRIVATE_KEY="~/.ssh/school"
+server_user="ubuntu"
+private_key_path="~/.ssh/school"
 
-ssh -i $PRIVATE_KEY ubuntu@52.204.95.133
+# SSH connection using single-character flags
+ssh -i "$private_key_path" $server_user@52.204.95.133

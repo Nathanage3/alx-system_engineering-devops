@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#  uses ssh to connect to your server using
+#the private key ~/.ssh/school with the user ubuntu
+
+Host 208899-web-01
+    HostName 52.204.95.133
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
