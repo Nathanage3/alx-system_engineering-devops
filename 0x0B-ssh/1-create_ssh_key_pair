@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Define the key file name and passphrase
 KEY_FILE="school"
 BITS=4096
