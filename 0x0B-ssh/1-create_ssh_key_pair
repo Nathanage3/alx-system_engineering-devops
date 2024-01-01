@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Define the key file name and passphrase
+KEY_FILE="school"
+BITS=4096
+PASSPHRASE="betty"
+
+# Check if the key file already exists
+if [ -e "$KEY_FILE" ]; then
+    echo "Error: Key file '$KEY_FILE' already exists."
+    exit 1
+fi
+
+# Generate the RSA key pair with the specified requirements
+ssh-keygen -t rsa -b "$BITS" -f "$KEY_FILE" -N "$PASSPHRASE"
+
+echo "RSA key pair created successfully."
