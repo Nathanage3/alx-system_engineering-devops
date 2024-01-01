@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-HOST="208899-web-01"
-
 PRIVATE_KEY="~/.ssh/school"
 
-ssh -i $PRIVATE_KEY ubuntu@$HOST
+ssh -i $PRIVATE_KEY ubuntu@52.204.95.133
