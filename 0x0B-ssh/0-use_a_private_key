@@ -2,6 +2,5 @@
 
 server_user="ubuntu"
 private_key_path="~/.ssh/school"
-
 # SSH connection using single-character flags
 ssh -i "$private_key_path" $server_user@52.204.95.133
