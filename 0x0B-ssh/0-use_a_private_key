@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
+#A script to connect to the remote server
 
-server_user="ubuntu"
 private_key_path="~/.ssh/school"
-# SSH connection using single-character flags
-ssh -i "$private_key_path" $server_user@52.204.95.133
+ssh -i "$private_key_path" ubuntu@52.204.95.133
