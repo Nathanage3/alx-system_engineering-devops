@@ -2,4 +2,4 @@
 #A script to connect to the remote server
 
 private_key_path="~/.ssh/school"
-ssh -i $private_key_path ubuntu@52.204.95.133
+ssh -i ${private_key_path} ubuntu@52.204.95.133
