@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Check if the number of parameters is less than four
+if [ "$#" -lt 4 ]; then
+    echo "Usage: $0 PATH_TO_FILE SERVER_NAME USERNAME PRIVATE_KEY_NAME"
+    exit 1
+fi
+
+file_path="$1"
+server_name="$2"
+username="$3"
+private_key_name="$4"
+
+declare -A server_ips
+server_ips["208899-web-01"]="52.204.95.133"
+
+if [ -z "${server_ips[$server_name]}" ]; then
+    echo "Error: Server name not recognized."
+    exit 1
+fi
+
+server_ip="${server_ips[$server_name]}"
+
+scp -o StrictHostKeyChecking=no -i "~/.ssh/$private_key_name" "$file_path" "$username@$server_ip":~/
+
+if [ "$?" -eq 0 ]; then
+    echo "$file_path transferred successfully to $username@$server_name:~/"
+else
+    echo "Error transferring $file_path to $username@$server_name"
+    exit 1
+fi
