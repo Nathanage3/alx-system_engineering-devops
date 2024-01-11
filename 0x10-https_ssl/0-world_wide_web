@@ -1,18 +1,36 @@
 #!/usr/bin/env bash
-# write a Bash script that will display information about the subdomains
+# Function to display information about subdomains
+dns_config() {
+    local domain="$1"
+    local subdomain="$2"
 
-dns_config () {
-    script=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
-    echo "$2 $script" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
+    # Use dig to query DNS information for the subdomain
+    local dns_output=$(dig +short -t ANY "$subdomain.$domain")
+
+    # Check if DNS output is empty
+    if [ -z "$dns_output" ]; then
+        echo "The subdomain $subdomain does not exist for $domain"
+    else
+        # Extract relevant information using awk
+        local record_type=$(echo "$dns_output" | awk '/ANSWER SECTION/ {getline; print $4}')
+        local destination=$(echo "$dns_output" | awk '/ANSWER SECTION/ {getline; print $1}')
+
+        # Display the information
+        echo "The subdomain $subdomain is a $record_type record and points to $destination"
+    fi
 }
 
-if [ "$#" == 1 ]
-then
-  dns_config "$1" "www"
-  dns_config "$1" "lb-01"
-  dns_config "$1" "web-01"
-  dns_config "$1" "web-02"
-elif [ "$#" == 2 ]
-then
-  dns_config "$1" "$2"
+# Check the number of arguments provided
+if [ "$#" -eq 1 ]; then
+    # If only domain is provided, display information for default subdomains
+    for sub in www lb-01 web-01 web-02; do
+        dns_config "$1" "$sub"
+    done
+elif [ "$#" -eq 2 ]; then
+    # If both domain and subdomain are provided, display information for the specified subdomain
+    dns_config "$1" "$2"
+else
+    # Display usage if the number of arguments is incorrect
+    echo "Usage: $0 <domain> [subdomain]"
+    exit 1
 fi
