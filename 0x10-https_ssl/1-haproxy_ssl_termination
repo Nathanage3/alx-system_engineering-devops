@@ -1,0 +1,40 @@
+global
+    log     /dev/log local0       
+    maxconn 2048
+    user    haproxy
+    group   haproxy
+    tune.ssl.default-dh-param 2048
+
+    ca-base /etc/ssl/certs        
+    crt-base /etc/ssl/private     
+
+    ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS
+    ssl-default-bind-options no-sslv3
+
+defaults
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    retries 3
+    option  redispatch
+    timeout connect  5000
+    timeout client  10000
+    timeout server  10000
+    option  forwardfor
+    option  http-server-close
+
+frontend www-ssl
+    bind *:443 ssl crt /etc/letsencrypt/live/www.anbesa.tech.com/fullchain.pem
+    http-request add-header X-Forwarded-Proto https
+    mode http
+    option forwardfor
+    default_backend www-backend
+
+backend www-backend
+    balance roundrobin
+    mode http
+    option http-server-close
+    option forwardfor
+    server 208899-web-01 52.204.95.133:80 check
+    server 208899-web-02 54.236.33.253:80 check
