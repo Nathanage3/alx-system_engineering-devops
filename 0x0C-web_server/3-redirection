@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Create a new Nginx configuration file for redirection
+sudo tee /etc/nginx/sites-available/redirect_me <<EOF
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name _;
+
+    location /redirect_me {
+        return 301 http://www.example.com;  # Replace with your desired destination URL
+    }
+
+    # Additional server configuration can be added here if needed
+}
+EOF
+
+# Create a symbolic link to enable the site
+sudo ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
+
+# Test Nginx configuration
+sudo nginx -t
+
+# Restart Nginx to apply changes
+sudo service nginx restart
