@@ -10,4 +10,4 @@ sudo sed -i 's/80 default_server/80/' /etc/nginx/sites-available/default
 sudo service nginx restart
 
 # create index.html file served out by server:
-echo 'Hello World!' | sudo tee /var/www/html/index.html > /dev/null
+echo 'Hello World!' | sudo tee /var/www/html/hbnb_static/index.html > /dev/null
