@@ -4,8 +4,23 @@
 #The path to the file to be transferred
 #The IP of the server we want to transfer the file to
 
-if [ $# -lt 4 ]
-then
-	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+if [ "$#" -lt 4 ]; then
+    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    exit 1
+fi
+
+# Assign parameters to variables
+file_path=$1
+server_ip=$2
+username=$3
+ssh_key_path=$4
+
+# Construct the SCP command
+scp -o StrictHostKeyChecking=no -i "$ssh_key_path" "$file_path" "$username@$server_ip":~/
+
+# Check the exit status of the SCP command
+if [ "$?" -eq 0 ]; then
+    echo "File transferred successfully."
 else
-	scp -o StrictHostKeyChecking=no -i "$4" "$1" "$3@$2":~
+    echo "Error transferring the file."
+fi
