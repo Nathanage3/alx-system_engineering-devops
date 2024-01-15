@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-#create a symbolic link b/n nginx configuration and nginx enabled files
-if ! service nginx status | grep -q "is running"; then
-  if ! service nginx start; then
-    echo "Failed to start Nginx."
-  fi
-fi
+# Script that make nginx listen to port 80
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx start
+kill "$(pgrep 'nginx' | head -1)"
