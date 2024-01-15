@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #create a symbolic link b/n nginx configuration and nginx enabled files
 if ! service nginx status | grep -q "is running"; then
-  service nginx start
+  if ! service nginx start; then
+    echo "Failed to start Nginx."
+  fi
 fi
