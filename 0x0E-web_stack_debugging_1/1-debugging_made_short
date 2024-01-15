@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#create a symbolic link b/n nginx configuration and nginx enabled files
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service gninx start
+kill "$(pgrep 'nginx' | head -1)"
