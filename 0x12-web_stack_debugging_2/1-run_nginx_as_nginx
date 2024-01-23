@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Check if the nginx user exists, create if not
+
+if ! id -u nginx &>/dev/null; then
+useradd -r -s /sbin/nologin nginx
+fi
+
+# Update Nginx configuration to run as nginx user and listen on port 8080
+
+sed -i 's/#user www-data/user nginx/' /etc/nginx/nginx.conf
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
+
+# Set correct permissions for the nginx configuration file
+
+chmod 644 /etc/nginx/nginx.conf
+
+# Restart Nginx service to apply changes
+
+service nginx restart
