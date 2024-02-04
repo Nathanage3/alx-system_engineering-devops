@@ -1,13 +1,26 @@
 #!/usr/bin/env bash
 # bash: script install and configure Nginx web server:
+apt-get update
 
-sudo apt-get update -y
-sudo apt-get install -y nginx
+# Install nginx
+apt-get install -y nginx
 
-# configure Nginx
-ufw allow 'Nginx HTTP'
-sudo sed -i 's/80 default_server/80/' /etc/nginx/sites-available/default
-sudo service nginx restart
+# Create a basic HTML file with "Hello World!"
+echo "<html><body>Hello World!</body></html>" > /var/www/html/index.html
 
-# create index.html file served out by server:
-echo 'Hello World!' | sudo tee /var/www/html/index.html > /dev/null
+# Configure Nginx to listen on port 80 and serve the HTML file
+echo "server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        root /var/www/html;
+        index index.html;
+    }
+}" > /etc/nginx/sites-available/default
+
+# Restart Nginx (without using systemctl)
+kill -s HUP $(cat /var/run/nginx.pid)
+
+# Done
+echo "Nginx installed and configured. You can test by running 'curl localhost'."

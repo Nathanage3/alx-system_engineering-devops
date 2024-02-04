@@ -14,8 +14,8 @@ HAPROXY_LB_CONFIG=\
 #--$DOMAIN_NAME-params-begin--
 backend $DOMAIN_NAME-backend
 	balance roundrobin
-	server 203672-web-01 52.204.95.133:80 check
-	server 203672-web-02 54.236.33.253:80 check
+	server 208899-web-01 52.204.95.133:80 check
+	server 208899-web-02 54.236.33.253:80 check
 frontend $DOMAIN_NAME-frontend
 	bind *:80
 	mode http
