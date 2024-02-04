@@ -17,8 +17,8 @@ if __name__ == "__main__":
                         "username": u.get("username")
                     } for t in requests.get(url + "todos",
                                             params={"userId": u.get("id")}).json()
-                ]
-                for u in users
+                ] for u in users
             },
-            jsonfile
+            jsonfile,
+            indent=2
         )
