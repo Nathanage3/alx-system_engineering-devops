@@ -25,6 +25,7 @@ import requests as r
 
 
 def number_of_subscribers(subreddit):
+    """Text"""
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:73.0) \
