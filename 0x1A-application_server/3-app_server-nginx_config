@@ -1,0 +1,11 @@
+# Sets ups Nginx so that the route /airbnb-onepage/ points to a Gunicorn instance listening on port 5000 and /airbnb-dynamic/number_odd_or_even/(any integer) points to a Gunicorn instance listening on port 5001
+server {
+       listen 80;
+       server_name _;
+       location /airbnb-onepage {
+                include proxy_params;
+                proxy_pass http://127.0.0.1:5000; }
+       location /airbnb-dynamic/number_odd_or_even/ {
+                include proxy_params;
+                proxy_pass http://127.0.0.1:5001/number_odd_or_even/; }
+}
