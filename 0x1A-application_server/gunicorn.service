@@ -1,0 +1,17 @@
+[Unit]
+Description=Gunicorn instance to serve 2-hbnb.py
+After=network.target
+
+[Service]
+User=ubuntu  # Replace with your actual username
+Group=ubuntu    # Replace with your actual group name
+WorkingDirectory=/path/to/AirBnB_clone_v4/web_dynamic
+ExecStart=/usr/local/bin/gunicorn -b 0.0.0.0:5003 -w 3 -t 120 web_dynamic.2-hbnb:app
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=gunicorn-airbnb
+
+[Install]
+WantedBy=multi-user.target
+
