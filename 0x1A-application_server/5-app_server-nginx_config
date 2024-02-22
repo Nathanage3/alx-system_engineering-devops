@@ -1,0 +1,13 @@
+# Setups Nginx so that the route / points to Gunicorn instance listening on port 5003 and the route /api/ points to Gunicorn instance listening on port 5002 - AirBnB clone and API respectively
+server {
+       listen 80;
+       server_name _;
+       root /home/ubuntu/AirBnB_clone_v4/web_dynamic/;
+       location / {
+                proxy_pass http://127.0.0.1:5003/2-hbnb/;
+                }
+        location /static/ {}
+        location /api/ {
+                            include proxy_params;
+                            proxy_pass http://127.0.0.1:5002; }
+}
