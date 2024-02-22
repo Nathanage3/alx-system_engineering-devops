@@ -1,0 +1,8 @@
+# Sets up Nginx so that the route /api/ points to a Gunicorn instance listening on port 5002 - AirBnB clone REST API
+server {
+       listen 80;
+       server_name _;
+       location /api/ {
+                include proxy_params;
+                proxy_pass http://127.0.0.1:5002; }
+}
